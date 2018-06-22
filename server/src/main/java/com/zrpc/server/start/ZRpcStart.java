@@ -37,4 +37,10 @@ public class ZRpcStart implements Start {
         param.setPort(8080);
         return param;
     }
+
+    public static void main(String[] args) {
+        ZRpcStart zRpcStart = new ZRpcStart();
+        zRpcStart.start();
+    }
+
 }

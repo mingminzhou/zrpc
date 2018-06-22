@@ -6,6 +6,7 @@ import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,6 +35,7 @@ public class RpcServer {
             this.work = new NioEventLoopGroup(workNum);
         }
         bootstrap.group(boss,work);
+        bootstrap.channel(NioServerSocketChannel.class);
     }
 
     public void start(){
@@ -49,8 +51,8 @@ public class RpcServer {
         bootstrap.option(ChannelOption.SO_REUSEADDR, true);
         try {
             ChannelFuture channelFuture = bootstrap.bind(new InetSocketAddress(port)).sync();
-            channelFuture.channel().closeFuture().sync();
             logger.info("zRpc start success");
+            channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             logger.error("zRPC start ERROR:",e);
         }finally {
