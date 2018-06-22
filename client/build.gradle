@@ -1,2 +1,18 @@
+// create by zmm (弄死熊猫)
 group = "com.zrpc"
 version = "0.0.1-SNAPSHOT"
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+description = 'zRPC:Client'
+
+repositories {
+    maven {url "http://maven.aliyun.com/nexus/content/groups/public/"}
+}
+
+dependencies {
+    compile group: 'io.netty', name: 'netty-all', version: '4.1.25.Final'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.0'
+}
