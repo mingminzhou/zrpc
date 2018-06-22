@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
  * <p>
  * on 2018/6/22
  */
-public class ZRpcStart implements Start {
-    private static Logger logger = LoggerFactory.getLogger(ZRpcStart.class);
+public class ZRpcServerStart implements Start {
+    private static Logger logger = LoggerFactory.getLogger(ZRpcServerStart.class);
     private Integer workNUm = Runtime.getRuntime().availableProcessors() * 2;
 
     private static RpcServer RPC_SERVER;
@@ -19,7 +19,7 @@ public class ZRpcStart implements Start {
     @Override
     public void start() {
         logger.info("gain start params");
-        ZRpcStartParam param = getParams();
+        ZRpcServerStartParam param = getParams();
         logger.info("begin start......");
         RPC_SERVER = new RpcServer(param.getPort(), 1, workNUm);
         RPC_SERVER.start();
@@ -32,14 +32,14 @@ public class ZRpcStart implements Start {
     }
 
     // TODO: 2018/6/22 param 做成可配置
-    public ZRpcStartParam getParams() {
-        ZRpcStartParam param = new ZRpcStartParam();
+    public ZRpcServerStartParam getParams() {
+        ZRpcServerStartParam param = new ZRpcServerStartParam();
         param.setPort(8080);
         return param;
     }
 
     public static void main(String[] args) {
-        ZRpcStart zRpcStart = new ZRpcStart();
+        ZRpcServerStart zRpcStart = new ZRpcServerStart();
         zRpcStart.start();
     }
 

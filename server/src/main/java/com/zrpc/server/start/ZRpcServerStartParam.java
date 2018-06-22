@@ -5,7 +5,7 @@ package com.zrpc.server.start;
  * <p>
  * on 2018/6/22
  */
-public class ZRpcStartParam {
+public class ZRpcServerStartParam {
 
     private int port;
 
