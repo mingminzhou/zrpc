@@ -9,4 +9,5 @@ build
 gradle.properties
 .gradle
 
-server/out/
+*/out/
+log/

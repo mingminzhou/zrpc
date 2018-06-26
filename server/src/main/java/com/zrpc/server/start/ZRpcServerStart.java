@@ -38,9 +38,4 @@ public class ZRpcServerStart implements Start {
         return param;
     }
 
-    public static void main(String[] args) {
-        ZRpcServerStart zRpcStart = new ZRpcServerStart();
-        zRpcStart.start();
-    }
-
 }

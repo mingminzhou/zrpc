@@ -1,0 +1,22 @@
+group = "com.zrpc"
+version = "0.0.1-SNAPSHOT"
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+description = 'zRPC:Common'
+
+repositories {
+    maven {url "http://maven.aliyun.com/nexus/content/groups/public/"}
+}
+
+dependencies {
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.47'
+    // https://mvnrepository.com/artifact/io.protostuff/protostuff-core
+    compile group: 'io.protostuff', name: 'protostuff-core', version: '1.6.0'
+// https://mvnrepository.com/artifact/io.protostuff/protostuff-runtime
+    compile group: 'io.protostuff', name: 'protostuff-runtime', version: '1.6.0'
+// https://mvnrepository.com/artifact/org.objenesis/objenesis
+    compile group: 'org.objenesis', name: 'objenesis', version: '2.6'
+
+}

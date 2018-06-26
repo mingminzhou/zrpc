@@ -19,16 +19,21 @@ include 'services:webservice'
 rootProject.name = 'zrpc'
 include 'server'
 include 'client'
-
+include 'test'
+include 'common'
 
 
 
 
 findProject(':server')?.name = 'zrpc-server'
-findProject(':client')?.name = 'rpc-client'
+findProject(':client')?.name = 'zrpc-client'
+findProject(':test')?.name = 'zrpc-test'
+findProject(':common')?.name = 'zrpc-common'
 
 
 
 
 rootProject.buildFileName = '$rootDir/compile/server'
 rootProject.buildFileName = '$rootDir/compile/client'
+
+
