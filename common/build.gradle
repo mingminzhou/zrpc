@@ -18,5 +18,7 @@ dependencies {
     compile group: 'io.protostuff', name: 'protostuff-runtime', version: '1.6.0'
 // https://mvnrepository.com/artifact/org.objenesis/objenesis
     compile group: 'org.objenesis', name: 'objenesis', version: '2.6'
-
+// https://mvnrepository.com/artifact/com.google.guava/guava
+    compile group: 'com.google.guava', name: 'guava', version: '25.1-jre'
+    compile group: 'io.netty', name: 'netty-all', version: '4.1.25.Final'
 }

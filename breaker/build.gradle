@@ -5,15 +5,13 @@ version = "0.0.1-SNAPSHOT"
 apply plugin: 'java'
 apply plugin: 'idea'
 
-description = 'zRPC:Client'
+description = 'zRPC:Breaker'
 
 repositories {
     maven {url "http://maven.aliyun.com/nexus/content/groups/public/"}
 }
 
 dependencies {
-    compile(project(':zrpc-common'))
-    compile group: 'io.netty', name: 'netty-all', version: '4.1.25.Final'
+    compile group: 'com.netflix.hystrix', name: 'hystrix-core', version: '1.5.12'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
-    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.0'
 }

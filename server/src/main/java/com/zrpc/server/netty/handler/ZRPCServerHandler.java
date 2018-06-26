@@ -2,6 +2,7 @@ package com.zrpc.server.netty.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,34 +11,36 @@ import org.slf4j.LoggerFactory;
  * <p>
  * on 2018/6/22
  */
+@Slf4j
 public class ZRPCServerHandler extends ChannelInboundHandlerAdapter {
-    private static Logger logger = LoggerFactory.getLogger(ZRPCServerHandler.class);
 
-
+    public ZRPCServerHandler() {
+        log.info("create ZRPCServerHandler");
+    }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        super.exceptionCaught(ctx, cause);
+        log.info("ZRPCServerHandler.exceptionCaught");
     }
 
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
-        super.channelRegistered(ctx);
+        log.info("ZRPCServerHandler.channelRegistered");
     }
 
     @Override
     public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
-        super.channelUnregistered(ctx);
+        log.info("ZRPCServerHandler.channelUnregistered");
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        super.channelActive(ctx);
+        log.info("ZRPCServerHandler.channelActive");
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        super.channelInactive(ctx);
+        log.info("ZRPCServerHandler.channelInactive");
     }
 
     @Override
@@ -49,16 +52,16 @@ public class ZRPCServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         super.channelReadComplete(ctx);
-        logger.info("this msg follows at end of pipeline,has read finish by the last handler");
+        log.info("this msg follows at end of pipeline,has read finish by the last handler");
     }
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        super.userEventTriggered(ctx, evt);
+        log.info("ZRPCServerHandler.userEventTriggered");
     }
 
     @Override
     public void channelWritabilityChanged(ChannelHandlerContext ctx) throws Exception {
-        super.channelWritabilityChanged(ctx);
+        log.info("ZRPCServerHandler.channelWritabilityChanged");
     }
 }

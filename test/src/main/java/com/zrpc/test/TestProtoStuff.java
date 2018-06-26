@@ -1,11 +1,12 @@
 package com.zrpc.test;
 
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.cache.LoadingCache;
 import io.protostuff.Tag;
 import protostuff.ProtoStuffUtil;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * create by zmm 弄死熊猫
@@ -20,12 +21,20 @@ public class TestProtoStuff {
         a.setName("zmm");
         a.setAge(18);
         a.setHight(180);
+        C c = new C();
+        c.setWeight("wer");
+        a.setC(c);
+        List<C> list = new ArrayList<>();
+        list.add(c);
+        a.setList(list);
+        Map<String,C> map = new HashMap<>();
+        map.put("1",c);
+        a.setMap(map);
         byte[] data = ProtoStuffUtil.serialize(a);
         System.out.println(Arrays.toString(data));
         B b =ProtoStuffUtil.deserialize(data,B.class);
         System.out.println(JSONObject.toJSONString(b));
-        double l = 1d;
-        int i = (int) l;
+
     }
 
 
@@ -37,6 +46,12 @@ public class TestProtoStuff {
         private String name;
         private Integer age;
         private Integer hight;
+
+        private List<C> list;
+
+        private Map<String,C> map;
+
+        private C c;
 
         public Integer getId() {
             return id;
@@ -69,6 +84,30 @@ public class TestProtoStuff {
         public void setHight(Integer hight) {
             this.hight = hight;
         }
+
+        public List<C> getList() {
+            return list;
+        }
+
+        public void setList(List<C> list) {
+            this.list = list;
+        }
+
+        public Map<String, C> getMap() {
+            return map;
+        }
+
+        public void setMap(Map<String, C> map) {
+            this.map = map;
+        }
+
+        public C getC() {
+            return c;
+        }
+
+        public void setC(C c) {
+            this.c = c;
+        }
     }
 
     class B{
@@ -76,6 +115,12 @@ public class TestProtoStuff {
         private String name;
         private Long agea;
         private Long hight;
+
+        private List<C> list;
+
+        private Map<String,C> map;
+
+        private C c;
 
         public Integer getId() {
             return id;
@@ -107,6 +152,42 @@ public class TestProtoStuff {
 
         public void setHight(Long hight) {
             this.hight = hight;
+        }
+
+        public List<C> getList() {
+            return list;
+        }
+
+        public void setList(List<C> list) {
+            this.list = list;
+        }
+
+        public Map<String, C> getMap() {
+            return map;
+        }
+
+        public void setMap(Map<String, C> map) {
+            this.map = map;
+        }
+
+        public C getC() {
+            return c;
+        }
+
+        public void setC(C c) {
+            this.c = c;
+        }
+    }
+
+    static class C{
+        private String weight;
+
+        public String getWeight() {
+            return weight;
+        }
+
+        public void setWeight(String weight) {
+            this.weight = weight;
         }
     }
 

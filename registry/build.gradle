@@ -1,0 +1,16 @@
+group = "com.zrpc"
+version = "0.0.1-SNAPSHOT"
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+description = 'zRPC:Registry'
+
+repositories {
+    maven {url "http://maven.aliyun.com/nexus/content/groups/public/"}
+}
+
+dependencies {
+// https://mvnrepository.com/artifact/com.netflix.eureka/eureka-client
+    runtime group: 'com.netflix.eureka', name: 'eureka-client', version: '1.9.2'
+}

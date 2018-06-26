@@ -9,10 +9,9 @@ import lombok.extern.slf4j.Slf4j;
  * on 2018/6/25
  */
 @Slf4j
-public class Test {
+public class TestServer {
 
     public static void main(String[] args) {
-        log.info("test");
         ZRpcServerStart zRpcStart = new ZRpcServerStart();
         zRpcStart.start();
     }

@@ -21,6 +21,8 @@ include 'server'
 include 'client'
 include 'test'
 include 'common'
+include 'registry'
+include 'breaker'
 
 
 
@@ -29,11 +31,17 @@ findProject(':server')?.name = 'zrpc-server'
 findProject(':client')?.name = 'zrpc-client'
 findProject(':test')?.name = 'zrpc-test'
 findProject(':common')?.name = 'zrpc-common'
+findProject(':registry')?.name = 'zrpc-registry'
+findProject(':breaker')?.name = 'zrpc-breaker'
 
 
 
 
 rootProject.buildFileName = '$rootDir/compile/server'
 rootProject.buildFileName = '$rootDir/compile/client'
+rootProject.buildFileName = '$rootDir/compile/test'
+rootProject.buildFileName = '$rootDir/compile/common'
+rootProject.buildFileName = '$rootDir/compile/registry'
+rootProject.buildFileName = '$rootDir/compile/breaker'
 
 
