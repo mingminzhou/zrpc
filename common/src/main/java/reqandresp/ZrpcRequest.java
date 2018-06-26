@@ -9,6 +9,30 @@ public class ZrpcRequest<T> {
     private String seqId;
     private String interfaceName;
     private String methodName;
-    private T consumeParam;
+//    private T consumeParam;
 
+
+    public String getSeqId() {
+        return seqId;
+    }
+
+    public void setSeqId(String seqId) {
+        this.seqId = seqId;
+    }
+
+    public String getInterfaceName() {
+        return interfaceName;
+    }
+
+    public void setInterfaceName(String interfaceName) {
+        this.interfaceName = interfaceName;
+    }
+
+    public String getMethodName() {
+        return methodName;
+    }
+
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
+    }
 }

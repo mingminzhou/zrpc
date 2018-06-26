@@ -10,8 +10,6 @@ package com.zrpc.breaker;
  */
 public interface ZrpcCommand<T> {
 
-    T execute();
-
     T getFallBack();
 
     default void print(){

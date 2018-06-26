@@ -12,6 +12,7 @@ repositories {
 }
 
 dependencies {
+    compile(project(':zrpc-common'))
     compile group: 'com.netflix.hystrix', name: 'hystrix-core', version: '1.5.12'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
 }
