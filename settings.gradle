@@ -23,6 +23,7 @@ include 'test'
 include 'common'
 include 'registry'
 include 'breaker'
+include 'annotation'
 
 
 
@@ -33,6 +34,7 @@ findProject(':test')?.name = 'zrpc-test'
 findProject(':common')?.name = 'zrpc-common'
 findProject(':registry')?.name = 'zrpc-registry'
 findProject(':breaker')?.name = 'zrpc-breaker'
+findProject(':annotation')?.name = 'zrpc-annotation'
 
 
 
@@ -43,5 +45,6 @@ rootProject.buildFileName = '$rootDir/compile/test'
 rootProject.buildFileName = '$rootDir/compile/common'
 rootProject.buildFileName = '$rootDir/compile/registry'
 rootProject.buildFileName = '$rootDir/compile/breaker'
+rootProject.buildFileName = '$rootDir/compile/annotation'
 
 
