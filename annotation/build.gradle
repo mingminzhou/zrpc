@@ -1,0 +1,17 @@
+// create by zmm (弄死熊猫)
+group = "com.zrpc"
+version = "0.0.1-SNAPSHOT"
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+description = 'zRPC:Annotation'
+
+repositories {
+    maven {url "http://maven.aliyun.com/nexus/content/groups/public/"}
+}
+
+dependencies {
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.47'
+}
