@@ -1,5 +1,7 @@
 package com.zrpc.test.JdkDynamicProxy;
 
+import com.zrpc.annotation.client.ZrpcClient;
+
 /**
  * create by zmm 弄死熊猫
  * <p>
@@ -7,23 +9,11 @@ package com.zrpc.test.JdkDynamicProxy;
  */
 public class KeyAndValue {
 
-    private String key;
+    @ZrpcClient
+    private JdkDynamicInterface jdkDynamicInterface;
 
-    private String value;
-
-    public String getKey() {
-        return key;
+    public String test(String key,String value){
+        return jdkDynamicInterface.test(key,value);
     }
 
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
 }

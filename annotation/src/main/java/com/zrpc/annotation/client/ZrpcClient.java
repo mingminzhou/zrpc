@@ -10,10 +10,10 @@ import java.lang.annotation.Target;
  * <p>
  * on 2018/6/27
  */
-@Target({ElementType.TYPE})
+@Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ZrpcClient {
 
-    String name();
+    String name() default "";
 
 }
