@@ -22,4 +22,13 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     // https://mvnrepository.com/artifact/com.alibaba/fastjson
     compile group: 'com.alibaba', name: 'fastjson', version: '1.2.47'
+    // https://mvnrepository.com/artifact/org.springframework/spring-core
+    compile group: 'org.springframework', name: 'spring-core', version: '5.0.7.RELEASE'
+// https://mvnrepository.com/artifact/org.springframework/spring-context
+    compile group: 'org.springframework', name: 'spring-context', version: '5.0.7.RELEASE'
+// https://mvnrepository.com/artifact/org.springframework/spring-beans
+    compile group: 'org.springframework', name: 'spring-beans', version: '5.0.7.RELEASE'
+    // https://mvnrepository.com/artifact/org.springframework/spring-aop
+    compile group: 'org.springframework', name: 'spring-aop', version: '5.0.7.RELEASE'
+
 }

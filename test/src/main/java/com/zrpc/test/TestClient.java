@@ -8,7 +8,20 @@ package com.zrpc.test;
 public class TestClient {
 
     public static void main(String[] args) {
+        System.out.println(TestClient.class.getCanonicalName());
+        System.out.println(TestClient.class.getName());
+        System.out.println(TestClient.class.getSimpleName());
 
+
+        System.out.println("=========================");
+
+
+        System.out.println(A.class.getCanonicalName());
+        System.out.println(A.class.getName());
+        System.out.println(A.class.getSimpleName());
     }
 
+    class A {
+
+    }
 }
