@@ -1,3 +1,4 @@
+// create by zmm (弄死熊猫)
 group = "com.zrpc"
 version = "0.0.1-SNAPSHOT"
 
@@ -21,4 +22,5 @@ dependencies {
 // https://mvnrepository.com/artifact/com.google.guava/guava
     compile group: 'com.google.guava', name: 'guava', version: '25.1-jre'
     compile group: 'io.netty', name: 'netty-all', version: '4.1.25.Final'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
 }

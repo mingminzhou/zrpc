@@ -22,7 +22,7 @@ public class ChannelHandlerFactory extends ChannelInitializer {
         channelPipeline.addLast(new HttpRequestDecoder())
                 .addLast(new ZrpcEncoder<ZrpcRequest>())
                 .addLast(new ZrpcDecoder(ZrpcResponse.class))
-                .addLast(new ZRPCClientHandler());
+                .addLast(new ZRPCClientHandler<ZrpcResponse>());
 
     }
 }

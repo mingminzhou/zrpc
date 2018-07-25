@@ -7,7 +7,6 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.handler.codec.http.HttpRequestDecoder;
-import io.netty.handler.codec.http.HttpResponseEncoder;
 import reqandresp.ZrpcRequest;
 import reqandresp.ZrpcResponse;
 
@@ -23,6 +22,6 @@ public class ChannelHandlerFactory extends ChannelInitializer {
         cp.addLast(new HttpRequestDecoder())
                 .addLast(new ZrpcEncoder<ZrpcResponse>())
                 .addLast(new ZrpcDecoder(ZrpcRequest.class))
-                .addLast(new ZRPCServerHandler());
+                .addLast(new ZRPCServerHandler<ZrpcRequest>());
     }
 }

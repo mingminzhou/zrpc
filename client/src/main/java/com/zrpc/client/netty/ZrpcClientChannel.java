@@ -15,13 +15,15 @@ import java.net.InetSocketAddress;
  * <p>
  * on 2018/6/22
  */
-public class RpcClient {
-    private static Logger logger = LoggerFactory.getLogger(RpcClient.class);
+public class ZrpcClientChannel {
+    private static Logger logger = LoggerFactory.getLogger(ZrpcClientChannel.class);
     // client属性
     private Channel clientChannel;
 
-    private static Bootstrap bootstrap = new Bootstrap();
-    static{
+    private Bootstrap bootstrap;
+
+    public ZrpcClientChannel() {
+        this.bootstrap = new Bootstrap();
         bootstrap.group(new NioEventLoopGroup(1));
         bootstrap.channel(NioSocketChannel.class);
         bootstrap.option(ChannelOption.ALLOCATOR,PooledByteBufAllocator.DEFAULT);
@@ -37,6 +39,10 @@ public class RpcClient {
     // TODO: 2018/6/22 interfaceName、methodName通过注解方式加载
     private String interfaceName;
     private String methodName;
+
+    public Channel getClientChannel(){
+        return clientChannel;
+    }
 
     public void connect() throws Exception {
         logger.info("rpc connect to ({}/{}):",host,port);

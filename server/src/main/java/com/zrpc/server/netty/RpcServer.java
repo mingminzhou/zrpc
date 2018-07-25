@@ -1,6 +1,5 @@
 package com.zrpc.server.netty;
 
-import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.ChannelFuture;
@@ -25,22 +24,22 @@ public class RpcServer {
     private NioEventLoopGroup boss;
     private NioEventLoopGroup work;
 
-    public RpcServer(Integer port,Integer bossNum,Integer workNum) {
+    public RpcServer(Integer port, Integer bossNum, Integer workNum) {
         this.port = port;
         this.bootstrap = new ServerBootstrap();
         this.boss = new NioEventLoopGroup(bossNum == null ? 1 : bossNum);
-        if(workNum == null){
+        if (workNum == null) {
             this.work = new NioEventLoopGroup();
-        }else{
+        } else {
             this.work = new NioEventLoopGroup(workNum);
         }
-        bootstrap.group(boss,work);
+        bootstrap.group(boss, work);
         bootstrap.channel(NioServerSocketChannel.class);
     }
 
-    public void start(){
+    public void start() {
         logger.info("zRPC begin start.............");
-        if(port == null){
+        if (port == null) {
             logger.info("zRPC is terminate，caused by ： port is null");
         }
         bootstrap.childHandler(new ChannelHandlerFactory());
@@ -54,8 +53,8 @@ public class RpcServer {
             logger.info("zRpc start success");
             channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
-            logger.error("zRPC start ERROR:",e);
-        }finally {
+            logger.error("zRPC start ERROR:", e);
+        } finally {
             stop();
         }
     }

@@ -17,7 +17,9 @@ public class ZrpcRequest<T> {
     }
 
     public void setSeqId(String seqId) {
-        this.seqId = seqId;
+        if(this.seqId == null){
+            this.seqId = seqId;
+        }
     }
 
     public String getInterfaceName() {

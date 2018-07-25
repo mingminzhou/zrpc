@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
  * on 2018/6/22
  */
 @Slf4j
-public class ZRPCClientHandler extends ChannelInboundHandlerAdapter {
+public class ZRPCClientHandler<T> extends ChannelInboundHandlerAdapter {
     public ZRPCClientHandler() {
         log.info("create ZRPCClientHandler");
     }
@@ -41,7 +41,7 @@ public class ZRPCClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        super.channelRead(ctx, msg);
+        T response = (T) msg;
         System.out.println("zRpc client read:" + msg);
     }
 

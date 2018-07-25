@@ -8,7 +8,7 @@ package com.zrpc.breaker;
  * <p>
  * on 2018/6/26
  */
-public interface ZrpcCommand<T> {
+public interface ZrpcDownGradingStrategy<T> {
 
     T getFallBack();
 

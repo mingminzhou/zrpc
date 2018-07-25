@@ -3,8 +3,6 @@ package com.zrpc.server.netty.handler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * create by zmm 弄死熊猫
@@ -12,7 +10,7 @@ import org.slf4j.LoggerFactory;
  * on 2018/6/22
  */
 @Slf4j
-public class ZRPCServerHandler extends ChannelInboundHandlerAdapter {
+public class ZRPCServerHandler<T> extends ChannelInboundHandlerAdapter {
 
     public ZRPCServerHandler() {
         log.info("create ZRPCServerHandler");

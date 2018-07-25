@@ -1,7 +1,5 @@
 package com.zrpc.annotation.service;
 
-import com.zrpc.annotation.AnnotationMap;
-
 import java.util.HashMap;
 
 /**
@@ -11,7 +9,7 @@ import java.util.HashMap;
  */
 public class ServiceAnnotationResolver {
 
-    public static AnnotationMap<String, Object> annotationMap = new AnnotationMap<>(new HashMap<>(16));
+//    public static AnnotationMap<String, Object> annotationMap = new AnnotationMap<>(new HashMap<>(16));
 
     private ServiceAnnotationResolver() {
     }

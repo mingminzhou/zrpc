@@ -13,6 +13,8 @@ repositories {
 
 dependencies {
     compile(project(':zrpc-common'))
+    compile(project(':zrpc-annotation'))
+    compile(project(':zrpc-breaker'))
     compile group: 'io.netty', name: 'netty-all', version: '4.1.25.Final'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     compile group: 'org.projectlombok', name: 'lombok', version: '1.18.0'

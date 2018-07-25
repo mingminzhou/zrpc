@@ -1,3 +1,4 @@
+// create by zmm (弄死熊猫)
 group = "com.zrpc"
 version = "0.0.1-SNAPSHOT"
 
@@ -11,6 +12,9 @@ repositories {
 }
 
 dependencies {
-// https://mvnrepository.com/artifact/com.netflix.eureka/eureka-client
     runtime group: 'com.netflix.eureka', name: 'eureka-client', version: '1.9.2'
+    compile group: 'org.apache.curator', name: 'curator-framework', version: '4.0.1'
+    compile group: 'org.apache.curator', name: 'curator-client', version: '4.0.1'
+    compile group: 'org.apache.curator', name: 'curator-recipes', version: '4.0.1'
+    testCompile group: 'org.apache.curator', name: 'curator-test', version: '4.0.1'
 }
