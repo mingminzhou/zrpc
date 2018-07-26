@@ -2,7 +2,7 @@ package com.zrpc.breaker;
 
 /**
  *
- * 指令隔离
+ * 降级策略，暴露接口，给用户自己实现降级策略
  *
  * create by zmm 弄死熊猫
  * <p>
@@ -12,7 +12,7 @@ public interface ZrpcDownGradingStrategy<T> {
 
     T getFallBack();
 
-    default void print(){
-        // TODO: 2018/6/26 定制化zrpcCommand的特征
+    default Throwable fallBack(String detail){
+        return new Throwable(detail);
     }
 }

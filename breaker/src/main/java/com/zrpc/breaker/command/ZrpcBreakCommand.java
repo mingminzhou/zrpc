@@ -13,21 +13,25 @@ import reqandresp.ZrpcRequest;
  */
 public class ZrpcBreakCommand extends HystrixCommand<Object>{
 
+    private String name;
+
     private ZrpcDownGradingStrategy downGradingStrategy;
 
     public ZrpcBreakCommand(ZrpcRequest request, HystrixThreadPoolKey threadPool, int executionIsolationThreadTimeoutInMilliseconds,ZrpcDownGradingStrategy downGradingStrategy) {
         super(HystrixCommandGroupKey.Factory.asKey(request.getInterfaceName() + ":" + request.getMethodName()), threadPool, executionIsolationThreadTimeoutInMilliseconds);
         this.downGradingStrategy = downGradingStrategy;
+        this.name = request.getInterfaceName() + ":" + request.getMethodName();
     }
 
     @Override
     protected Object run() throws Exception {
+
         return null;// TODO: 2018/6/26 调用下游接口的具体逻辑
     }
 
     @Override
     protected Object getFallback() {
-        return downGradingStrategy.getFallBack();// TODO: 2018/6/26 实现具体降级和熔断后的回调逻辑
+        return downGradingStrategy == null ? downGradingStrategy.fallBack(name) : downGradingStrategy.getFallBack();
     }
 
 }

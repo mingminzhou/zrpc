@@ -1,6 +1,6 @@
 // create by zmm (弄死熊猫)
 # zrpc
-傻瓜式，轻量级rpc框架（基于netty、protoStuff）
+傻瓜式，轻量级rpc框架（基于netty、protoStuff；client、server仅需通过注解@ZrpcClient、@ZrpcService便可使用）
 
 
 # client用注解和jdk动态代理的方式实现,基于hystrix做breaker，对于channel的管理可分为两种：
