@@ -5,6 +5,7 @@ import com.zrpc.annotation.client.ZrpcClient;
 import com.zrpc.breaker.command.ZrpcBreakCommand;
 import com.zrpc.client.context.ClientContext;
 import com.zrpc.client.netty.ZrpcClientChannel;
+import exception.ZrpcException;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -38,16 +39,15 @@ public class ClientAnnotationResolver implements BeanPostProcessor, Initializing
             String className = field.getType().getCanonicalName();
 
             if (!clientProxyCache.getMap().containsKey(className)) {
-                ZrpcBreakCommand zrpcBreakCommand = new ZrpcBreakCommand(new ZrpcRequest(),null, 200,null);
                 Object fieldProxy = Proxy.newProxyInstance(field.getType().getClassLoader(),
-                        new Class[]{field.getClass()}, new ZrpcClientProxy(zrpcBreakCommand));
+                        new Class[]{field.getClass()}, new ZrpcClientProxy());
                 clientProxyCache.put(className, fieldProxy);
             }
             field.setAccessible(true);
             try {
                 field.set(bean, clientProxyCache.getMap().get(className));
             } catch (IllegalAccessException e) {
-                new IllegalAccessException(className);
+                new ZrpcException(className,e,className);
             }
             field.setAccessible(false);
 

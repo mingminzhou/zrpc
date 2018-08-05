@@ -1,5 +1,6 @@
 package com.zrpc.client;
 
+import com.zrpc.breaker.channel.Channel;
 import com.zrpc.breaker.command.ZrpcBreakCommand;
 import com.zrpc.client.context.ClientContext;
 import com.zrpc.client.netty.ZrpcClientChannel;
@@ -16,12 +17,6 @@ import java.util.UUID;
  */
 public class ZrpcClientProxy implements InvocationHandler {
 
-    private ZrpcBreakCommand zrpcBreakCommand;
-
-    public ZrpcClientProxy(ZrpcBreakCommand zrpcBreakCommand) {
-        this.zrpcBreakCommand = zrpcBreakCommand;
-    }
-
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         String interfaceName = method.getDeclaringClass().getName();
@@ -34,8 +29,9 @@ public class ZrpcClientProxy implements InvocationHandler {
         if (!ClientContext.INSTANCE.getClientChannelCache().getMap().containsKey(serviceName)) {
             ClientContext.INSTANCE.getClientChannelCache().put(serviceName, new ZrpcClientChannel());
         }
-        ZrpcClientChannel clientChannel = ClientContext.INSTANCE.getClientChannelCache().get(serviceName);
-        clientChannel.send(request);
-        return "success";
+        ZrpcBreakCommand zrpcBreakCommand = new ZrpcBreakCommand<Object>(new ZrpcRequest(), new Channel[]{
+            ClientContext.INSTANCE.getClientChannelCache().get(serviceName)
+        }, 200, null);
+        return zrpcBreakCommand.execute();
     }
 }

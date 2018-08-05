@@ -11,6 +11,8 @@ public class ZrpcRequest<T> {
     private String methodName;
 //    private T consumeParam;
 
+    // 熔断降级的相关参数
+
 
     public String getSeqId() {
         return seqId;

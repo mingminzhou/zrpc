@@ -7,20 +7,24 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import reqandresp.ZrpcResponse;
 
 import java.net.InetSocketAddress;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * create by zmm 弄死熊猫
  * <p>
  * on 2018/6/22
  */
-public class ZrpcClientChannel {
+public class ZrpcClientChannel implements com.zrpc.breaker.channel.Channel {
     private static Logger logger = LoggerFactory.getLogger(ZrpcClientChannel.class);
     // client属性
     private Channel clientChannel;
 
     private Bootstrap bootstrap;
+
+    private ReentrantLock reentrantLock;
 
     public ZrpcClientChannel() {
         this.bootstrap = new Bootstrap();
@@ -91,10 +95,15 @@ public class ZrpcClientChannel {
         clientChannel.writeAndFlush(msg);
     }
 
+    @Override
     public void send(Object msg) throws Exception {
         writeRequest(msg);
     }
 
+    @Override
+    public ZrpcResponse getResult() {
+        return null;
+    }
 
 
 }
