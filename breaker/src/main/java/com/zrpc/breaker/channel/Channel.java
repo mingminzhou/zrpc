@@ -1,5 +1,6 @@
 package com.zrpc.breaker.channel;
 
+import io.netty.channel.ChannelPromise;
 import reqandresp.ZrpcResponse;
 
 /**
@@ -8,6 +9,6 @@ import reqandresp.ZrpcResponse;
  * on 2018/7/26
  */
 public interface Channel {
-    void send(Object msg) throws Exception;
-    ZrpcResponse getResult();
+    ChannelPromise send(Object msg) throws Exception;
+    ZrpcResponse getResult(ChannelPromise promise);
 }

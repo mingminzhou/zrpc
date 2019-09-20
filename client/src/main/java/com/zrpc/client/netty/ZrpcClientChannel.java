@@ -90,18 +90,26 @@ public class ZrpcClientChannel implements com.zrpc.breaker.channel.Channel {
         if(isConnected()) clientChannel.disconnect();
     }
 
-    private void writeRequest(Object msg) throws Exception {
+    private ChannelPromise writeRequest(Object msg) throws Exception {
         reConnect();
-        clientChannel.writeAndFlush(msg);
+        return clientChannel.writeAndFlush(msg).channel().newPromise();
     }
 
     @Override
-    public void send(Object msg) throws Exception {
-        writeRequest(msg);
+    public ChannelPromise send(Object msg) throws Exception {
+        return writeRequest(msg);
     }
 
     @Override
-    public ZrpcResponse getResult() {
+    public ZrpcResponse getResult(ChannelPromise promise) {
+        try {
+            promise.await();
+
+
+        } catch (InterruptedException e) {
+            logger.error("zRpcClient gain result error:",e);
+        }
+
         return null;
     }
 

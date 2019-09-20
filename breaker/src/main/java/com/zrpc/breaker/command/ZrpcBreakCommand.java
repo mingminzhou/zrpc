@@ -7,6 +7,7 @@ import com.zrpc.breaker.ZrpcDownGradingStrategy;
 import com.zrpc.breaker.channel.Channel;
 import exception.ZrpcException;
 import exception.ZrpcExceptionEnum;
+import io.netty.channel.ChannelPromise;
 import reqandresp.ZrpcRequest;
 
 /**
@@ -37,8 +38,8 @@ public class ZrpcBreakCommand<T> extends HystrixCommand<Object> {
     protected Object run() throws Exception {
         if (channels == null || channels.length == 0)
             throw new ZrpcException(ZrpcExceptionEnum.NO_CHANNELS_INIT.getExceptionDesc(), new Throwable(), ZrpcExceptionEnum.NO_CHANNELS_INIT.getExceptionDesc());
-        channels[0].send(zrpcRequest); // TODO: 2018/7/26 完善从channel数组中获取channel的策略
-        return channels[0].getResult();
+        ChannelPromise promise = channels[0].send(zrpcRequest); // TODO: 2018/7/26 完善从channel数组中获取channel的策略
+        return channels[0].getResult(promise);
     }
 
     @Override

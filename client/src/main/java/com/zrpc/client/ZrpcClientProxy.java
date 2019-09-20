@@ -25,7 +25,7 @@ public class ZrpcClientProxy implements InvocationHandler {
         request.setInterfaceName(interfaceName);
         request.setMethodName(methodName);
         request.setSeqId(UUID.randomUUID().toString()); // TODO: 2018/7/16 后期加入ip以区分不同物理服务器上相同服务的请求id
-        String serviceName = interfaceName + methodName;
+        String serviceName = interfaceName + "." + methodName;
         if (!ClientContext.INSTANCE.getClientChannelCache().getMap().containsKey(serviceName)) {
             ClientContext.INSTANCE.getClientChannelCache().put(serviceName, new ZrpcClientChannel());
         }

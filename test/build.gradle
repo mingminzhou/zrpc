@@ -32,5 +32,10 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-beans', version: '5.0.7.RELEASE'
     // https://mvnrepository.com/artifact/org.springframework/spring-aop
     compile group: 'org.springframework', name: 'spring-aop', version: '5.0.7.RELEASE'
+    // https://mvnrepository.com/artifact/com.rabbitmq/amqp-client
+    compile group: 'com.rabbitmq', name: 'amqp-client', version: '3.6.5'
+// https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-client
+    compile group: 'org.apache.rocketmq', name: 'rocketmq-client', version: '4.5.2'
+
 
 }

@@ -30,14 +30,14 @@ public class ClientAnnotationResolver implements BeanPostProcessor, Initializing
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         Class<?> clz = bean.getClass();
         Field[] fields = clz.getDeclaredFields();
-        if (fields == null || fields.length > 1) return bean;
+        if (fields == null || fields.length < 1) return bean;
         ZrpcMap<String, Object> clientProxyCache = ClientContext.INSTANCE.getClientProxyCache();
-        ZrpcMap<String, ZrpcClientChannel> clientChannelCache = ClientContext.INSTANCE.getClientChannelCache();
         for (Field field : fields) {
             ZrpcClient zrpcClient = field.getAnnotation(ZrpcClient.class);
             if (zrpcClient == null) continue;
             String className = field.getType().getCanonicalName();
 
+            // 初始化client proxy缓存
             if (!clientProxyCache.getMap().containsKey(className)) {
                 Object fieldProxy = Proxy.newProxyInstance(field.getType().getClassLoader(),
                         new Class[]{field.getClass()}, new ZrpcClientProxy());
